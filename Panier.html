@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+header {
+  background-color: #2c722a;
+  padding: 75px;
+}
+header h1 {
+  color: #FFA400;
+  text-align: center;
+  text-transform: uppercase;
+}
+main {
+  background-color: #EAF6FF;
+  color: #232528;
+  padding: 100px;
+  min-height: 200px;
+}
+footer {
+  text-align: center;
+  color: #EAF6FF;
+  font-weight: bold;
+  background-color: #232528;
+  padding: 30px;
+}
+.words-wrapper {
+  text-align: center;
+}
+button {
+  background-color:blanchedalmond;
+  padding: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+section div {
+  text-align: center;
+}
+#texte-panier {
+  margin: 80px;
+  font-size: 26px;
+  font-weight: 600;
+}
+#details-panel {
+  list-style-type: none;
+}
+#article1 {
+  visibility: hidden;
+}
+#article2 {
+  visibility: hidden;
+}
+#article3 {
+  visibility: hidden;
+}
+    </style>
+</head>
+<body>
+    <script>
+        var panier = [];
+var total = 0;
+
+function ajouterArticle(prix) {
+  //alert(total);
+  total += prix;
+  panier.push(prix);
+  
+  document.getElementById('texte-panier').innerHTML = 'Vous avez ' + panier.length + ' produit pour un total de ' +  total.toString() + 'DTN';
+  //document.getElementById('details-panel').innerHTML = panier.toString();
+  rafraichirPanier();
+}
+
+function rafraichirPanier() {
+  var nbreArticle1 = 0;
+  var nbreArticle2 = 0;
+  var nbreArticle3 = 0;
+  
+  for(var i = 0; i < panier.length; i++) {
+    if(panier[i] == 24) {
+      nbreArticle1++;
+      document.getElementById('article1').innerHTML = 'Vous avez ' + nbreArticle1 + ' un produit Smoothies Orange-Pomme';
+      document.getElementById('article1').style.visibility = 'visible';
+    }
+    if(panier[i] == 30) {
+      nbreArticle2++;
+      document.getElementById('article2').innerHTML = 'Vous avez ' + nbreArticle2 + ' un produit Fraise-Fremboise';
+      document.getElementById('article2').style.visibility = 'visible';
+    }
+    if(panier[i] == 50) {
+      nbreArticle3++;
+      document.getElementById('article3').innerHTML = 'Vous avez ' + nbreArticle3 + ' un produit Ananas-pastèque';
+      document.getElementById('article3').style.visibility = 'visible';
+    }
+  }
+}
+
+
+
+
+    </script>
+    <header>
+        <h1>Mon panier</h1>
+      </header>
+      <main>
+        <section>
+          <div>
+            <button onclick="ajouterArticle(24)">Ajouter Smoothies Orange-Pomme 24DTN</button>
+            <button onclick="ajouterArticle(30)">Ajouter Smoothies Fraise-Fremboise 30DTN</button>
+            <button onclick="ajouterArticle(50)">Ajouter Smoothies Ananas-pastèque 50DTN</button>
+          </div>
+        </section>
+        
+        <section>
+          <div id="texte-panier">Mon panier est vide</div>
+          <div>
+            <ul id="details-panel">
+              <li id="article1">Vous n'avez pas de produits 1</li>
+              <li id="article2">Vous n'avez pas de produits 2</li>
+              <li id="article3">Vous n'avez pas de produits 3</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div>Réalisé par Dona & Asma</div>
+      </footer>
+    
+</body>
+</html>
+
